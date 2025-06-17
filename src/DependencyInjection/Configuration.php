@@ -6,22 +6,11 @@ namespace Wundii\AfterbuySdk\SymfonyBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
-use Wundii\AfterbuySdk\Enum\ErrorLanguageEnum;
 
 class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $endpoint = array_map(
-            static fn (EndpointEnum $endpointEnum): string => $endpointEnum->name,
-            EndpointEnum::cases()
-        );
-        $errorLanguage = array_map(
-            static fn (ErrorLanguageEnum $errorLanguageEnum): string => $errorLanguageEnum->value,
-            ErrorLanguageEnum::cases()
-        );
-
         $treeBuilder = new TreeBuilder('afterbuy_sdk');
 
         /** @phpstan-ignore-next-line  */
@@ -32,19 +21,19 @@ class Configuration implements ConfigurationInterface
             ->children()
             ->scalarNode('accountToken')
             ->defaultValue('"%env(AFTERBUY_ACCOUNT_TOKEN)%"')
-            ->info('Account Token or %env(Afterbuy-AccountToken)%')
+            ->info('Account Token or %env(AFTERBUY_ACCOUNT_TOKEN)%')
             ->end()
             ->scalarNode('partnerToken')
             ->defaultValue('"%env(AFTERBUY_PARTNER_TOKEN)%"')
-            ->info('Partner Token or %env(Afterbuy-PartnerToken)%')
+            ->info('Partner Token or %env(AFTERBUY_PARTNER_TOKEN)%')
             ->end()
-            ->enumNode('endpointEnum')
-            ->values($endpoint)
+            ->scalarNode('endpointEnum')
             ->defaultValue('"%env(AFTERBUY_ENDPOINT_ENUM)%"')
+            ->info('SANDBOX/PROD or %env(AFTERBUY_ENDPOINT_ENUM)%')
             ->end()
-            ->enumNode('errorLanguageEnum')
-            ->values($errorLanguage)
+            ->scalarNode('errorLanguageEnum')
             ->defaultValue('DE')
+            ->info('Error language enum value (e.g. DE, EN)')
             ->end()
             ->end()
             ->end()

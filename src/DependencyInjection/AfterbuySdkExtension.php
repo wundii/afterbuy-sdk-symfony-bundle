@@ -37,13 +37,16 @@ class AfterbuySdkExtension extends Extension
             throw new Exception('The "afterbuy_global" configuration must be an array.');
         }
 
-        if (! is_string($loggerInterface)) {
+        if (! is_string($loggerInterface) && $loggerInterface !== null) {
             throw new Exception('The "logger_interface" configuration must be a string.');
         }
 
-        if (! is_string($validatorBuilder)) {
+        if (! is_string($validatorBuilder) && $validatorBuilder !== null) {
             throw new Exception('The "validatorBuilder" configuration must be a string.');
         }
+
+        $loggerInterface = (string) $loggerInterface;
+        $validatorBuilder = (string) $validatorBuilder;
 
         $accountToken = $afterbuyGlobal['accountToken'];
         $partnerToken = $afterbuyGlobal['partnerToken'];
@@ -66,11 +69,14 @@ class AfterbuySdkExtension extends Extension
             throw new Exception('The "afterbuy_global.errorLanguageEnum" configuration must be a string.');
         }
 
+        $endpointEnum = EndpointEnum::tryFrom(strtolower($endpointEnum));
+        $errorLanguageEnum = ErrorLanguageEnum::tryFrom(strtoupper($errorLanguageEnum));
+
         $afterbuyGlobalDef = new Definition(AfterbuyGlobal::class, [
             $accountToken,
             $partnerToken,
-            strtolower($endpointEnum),
-            strtoupper($errorLanguageEnum),
+            $endpointEnum,
+            $errorLanguageEnum,
         ]);
         $containerBuilder->setDefinition(AfterbuyGlobal::class, $afterbuyGlobalDef);
 
