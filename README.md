@@ -40,10 +40,11 @@ The following setting options are available
 
 ```yaml
 afterbuy_sdk:
-    data_config:
-        approach: 'CONSTRUCTOR|PROPERTY|SETTER' # ApproachEnum::SETTER
-        accessible: 'PRIVATE|PUBLIC' # AccessibleEnum::PUBLIC
-        class_map: 
-          InterfaceOrClassName: 'ClassName', # Class mapping for interfaces or other classes
-          ...: ...
+  afterbuy_global:
+    accountToken: <your_account_token> / %env(accountToken)%
+    partnerToken: <your_partner_token> / %env(partnerToken)%
+    endpointEnum: SANDBOX / %env(endpointEnum)%
+    errorLanguageEnum: DE / %env(errorLanguageEnum)%
+  logger_interface: <your_logger_interface_class_string>
+  validatorBuilder:
 ```
