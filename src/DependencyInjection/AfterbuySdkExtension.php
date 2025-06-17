@@ -13,8 +13,6 @@ use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
-use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
-use Wundii\AfterbuySdk\Enum\ErrorLanguageEnum;
 
 class AfterbuySdkExtension extends Extension
 {
@@ -73,9 +71,6 @@ class AfterbuySdkExtension extends Extension
         $containerBuilder->setParameter('afterbuy_sdk.afterbuy_global.partnerToken', $partnerToken);
         $containerBuilder->setParameter('afterbuy_sdk.afterbuy_global.endpointEnum', $endpointEnum);
         $containerBuilder->setParameter('afterbuy_sdk.afterbuy_global.errorLanguageEnum', $errorLanguageEnum);
-
-        // $endpointEnum = EndpointEnum::tryFrom(strtolower($endpointEnum));
-        // $errorLanguageEnum = ErrorLanguageEnum::tryFrom(strtoupper($errorLanguageEnum));
 
         $afterbuyGlobalDef = new Definition(AfterbuyGlobal::class, [
             $accountToken,

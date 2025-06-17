@@ -19,9 +19,9 @@ class ConfigurationTest extends TestCase
 
         $expected = [
             'afterbuy_global' => [
-                'accountToken' => '"%env(AFTERBUY_ACCOUNT_TOKEN)%"',
-                'partnerToken' => '"%env(AFTERBUY_PARTNER_TOKEN)%"',
-                'endpointEnum' => '"%env(AFTERBUY_ENDPOINT_ENUM)%"',
+                'accountToken' => '<your_account_token>',
+                'partnerToken' => '<your_partner_token>',
+                'endpointEnum' => 'sandbox',
                 'errorLanguageEnum' => 'DE',
             ],
             'logger_interface' => null,
@@ -48,6 +48,8 @@ class ConfigurationTest extends TestCase
 
         $config = $processor->processConfiguration($configuration, $input);
 
+        $this->assertSame('your_account_token', $config['afterbuy_global']['accountToken']);
+        $this->assertSame('your_partner_token', $config['afterbuy_global']['partnerToken']);
         $this->assertSame('PROD', $config['afterbuy_global']['endpointEnum']);
         $this->assertSame('EN', $config['afterbuy_global']['errorLanguageEnum']);
     }
