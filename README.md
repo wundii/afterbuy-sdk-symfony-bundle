@@ -43,7 +43,7 @@ afterbuy_sdk:
   afterbuy_global:
     accountToken: <your_account_token> / %env(accountToken)%
     partnerToken: <your_partner_token> / %env(partnerToken)%
-    endpointEnum: SANDBOX / %env(endpointEnum)%
+    endpointEnum: sandbox / %env(endpointEnum)%
     errorLanguageEnum: DE / %env(errorLanguageEnum)%
   logger_interface: <your_logger_interface_class_string>
   validatorBuilder:

@@ -27,7 +27,7 @@ class AfterbuySdkExtensionTest extends TestCase
             'afterbuy_global' => [
                 'accountToken' => 'your_account_token',
                 'partnerToken' => 'your_partner_token',
-                'endpointEnum' => 'SANDBOX',
+                'endpointEnum' => 'sandbox',
                 'errorLanguageEnum' => 'DE',
             ],
             'logger_interface' => 'logger_interface_class_string',
@@ -44,8 +44,10 @@ class AfterbuySdkExtensionTest extends TestCase
 
         $this->assertSame('your_account_token', $args[0]);
         $this->assertSame('your_partner_token', $args[1]);
-        $this->assertInstanceOf(EndpointEnum::class, $args[2]);
-        $this->assertInstanceOf(ErrorLanguageEnum::class, $args[3]);
+        $this->assertSame('sandbox', $args[2]);
+        $this->assertSame('DE', $args[3]);
+        // $this->assertInstanceOf(EndpointEnum::class, $args[2]);
+        // $this->assertInstanceOf(ErrorLanguageEnum::class, $args[3]);
     }
 
     public function testGetXsdValidationBasePath(): void

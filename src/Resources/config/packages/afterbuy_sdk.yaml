@@ -2,7 +2,7 @@ afterbuy_sdk:
   afterbuy_global:
     accountToken: <your_account_token>
     partnerToken: <your_partner_token>
-    endpointEnum: SANDBOX
+    endpointEnum: sandbox
     errorLanguageEnum: DE
   logger_interface:
   validatorBuilder:

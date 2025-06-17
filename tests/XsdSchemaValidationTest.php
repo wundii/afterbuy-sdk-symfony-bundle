@@ -20,7 +20,7 @@ class XsdSchemaValidationTest extends TestCase
     <afterbuy_global>
         <accountToken>token1</accountToken>
         <partnerToken>token2</partnerToken>
-        <endpointEnum>SANDBOX</endpointEnum>
+        <endpointEnum>sandbox</endpointEnum>
         <errorLanguageEnum>DE</errorLanguageEnum>
 </afterbuy_global>
     <logger_interface>interface</logger_interface>

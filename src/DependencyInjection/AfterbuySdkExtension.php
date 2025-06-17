@@ -69,8 +69,13 @@ class AfterbuySdkExtension extends Extension
             throw new Exception('The "afterbuy_global.errorLanguageEnum" configuration must be a string.');
         }
 
-        $endpointEnum = EndpointEnum::tryFrom(strtolower($endpointEnum));
-        $errorLanguageEnum = ErrorLanguageEnum::tryFrom(strtoupper($errorLanguageEnum));
+        $containerBuilder->setParameter('afterbuy_sdk.afterbuy_global.accountToken', $accountToken);
+        $containerBuilder->setParameter('afterbuy_sdk.afterbuy_global.partnerToken', $partnerToken);
+        $containerBuilder->setParameter('afterbuy_sdk.afterbuy_global.endpointEnum', $endpointEnum);
+        $containerBuilder->setParameter('afterbuy_sdk.afterbuy_global.errorLanguageEnum', $errorLanguageEnum);
+
+        // $endpointEnum = EndpointEnum::tryFrom(strtolower($endpointEnum));
+        // $errorLanguageEnum = ErrorLanguageEnum::tryFrom(strtoupper($errorLanguageEnum));
 
         $afterbuyGlobalDef = new Definition(AfterbuyGlobal::class, [
             $accountToken,

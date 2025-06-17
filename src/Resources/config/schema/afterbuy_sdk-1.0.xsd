@@ -26,8 +26,8 @@
 
     <xsd:simpleType name="EndpointEnumType">
         <xsd:restriction base="xsd:string">
-            <xsd:enumeration value="PROD"/>
-            <xsd:enumeration value="SANDBOX"/>
+            <xsd:enumeration value="prod"/>
+            <xsd:enumeration value="sandbox"/>
         </xsd:restriction>
     </xsd:simpleType>
 

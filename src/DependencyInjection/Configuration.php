@@ -29,7 +29,7 @@ class Configuration implements ConfigurationInterface
             ->end()
             ->scalarNode('endpointEnum')
             ->defaultValue('"%env(AFTERBUY_ENDPOINT_ENUM)%"')
-            ->info('SANDBOX/PROD or %env(AFTERBUY_ENDPOINT_ENUM)%')
+            ->info('sandbox/prod or %env(AFTERBUY_ENDPOINT_ENUM)%')
             ->end()
             ->scalarNode('errorLanguageEnum')
             ->defaultValue('DE')
