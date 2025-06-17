@@ -41,10 +41,10 @@ The following setting options are available
 ```yaml
 afterbuy_sdk:
   afterbuy_global:
-    accountToken: <your_account_token> / %env(accountToken)%
-    partnerToken: <your_partner_token> / %env(partnerToken)%
-    endpointEnum: sandbox / %env(endpointEnum)%
-    errorLanguageEnum: DE / %env(errorLanguageEnum)%
+    accountToken: <your_account_token> / %env(...)%
+    partnerToken: <your_partner_token> / %env(...)%
+    endpointEnum: sandbox / %env(...)%
+    errorLanguageEnum: DE / %env(...)%
   logger_interface: <your_logger_interface_class_string>
   validatorBuilder:
 ```
