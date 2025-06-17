@@ -1,7 +1,7 @@
 afterbuy_sdk:
   afterbuy_global:
-    accountToken: <your_account_token> / %env(your_account_token)%
-    partnerToken: <your_partner_token> / %env(your_partner_token)%
+    accountToken: <your_account_token>
+    partnerToken: <your_partner_token>
     endpointEnum: SANDBOX
     errorLanguageEnum: DE
   logger_interface: <your_logger_interface_class_string>
