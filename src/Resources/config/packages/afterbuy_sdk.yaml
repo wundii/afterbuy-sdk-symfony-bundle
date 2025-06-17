@@ -4,5 +4,5 @@ afterbuy_sdk:
     partnerToken: <your_partner_token>
     endpointEnum: SANDBOX
     errorLanguageEnum: DE
-  logger_interface: <your_logger_interface_class_string>
+  logger_interface:
   validatorBuilder:

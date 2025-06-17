@@ -31,6 +31,7 @@ class AfterbuySdkExtensionTest extends TestCase
                 'errorLanguageEnum' => 'DE',
             ],
             'logger_interface' => 'logger_interface_class_string',
+            'validatorBuilder' => '',
         ]];
 
         $extension->load($configs, $container);

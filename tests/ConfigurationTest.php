@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Wundii\AfterbuySdk\SymfonyBundle\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Config\Definition\Processor;
 use Wundii\AfterbuySdk\SymfonyBundle\DependencyInjection\Configuration;
 
@@ -16,9 +15,20 @@ class ConfigurationTest extends TestCase
         $processor = new Processor();
         $configuration = new Configuration();
 
-        $this->expectException(InvalidConfigurationException::class);
-        $this->expectExceptionMessage('The child config "afterbuy_global" under "afterbuy_sdk" must be configured.');
-        $processor->processConfiguration($configuration, []);
+        $config = $processor->processConfiguration($configuration, []);
+
+        $expected = [
+            'afterbuy_global' => [
+                'accountToken' => '"%env(AFTERBUY_ACCOUNT_TOKEN)%"',
+                'partnerToken' => '"%env(AFTERBUY_PARTNER_TOKEN)%"',
+                'endpointEnum' => '"%env(AFTERBUY_ENDPOINT_ENUM)%"',
+                'errorLanguageEnum' => 'DE',
+            ],
+            'logger_interface' => null,
+            'validatorBuilder' => null,
+        ];
+
+        $this->assertSame($expected, $config);
     }
 
     public function testOverrideConfiguration(): void
