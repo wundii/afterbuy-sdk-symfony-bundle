@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://wundii.com/schema/dic/afterbuy_sdk"
+            targetNamespace="http://wundii.com/schema/dic/afterbuy_sdk"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+    <xsd:element name="config" type="AfterbuyGlobal"/>
+
+    <xsd:complexType name="AfterbuyGlobal">
+        <xsd:sequence>
+            <xsd:element name="afterbuy_global" minOccurs="1" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="accountToken" type="xsd:string"/>
+                        <xsd:element name="partnerToken" type="xsd:string"/>
+                        <xsd:element name="endpointEnum" type="EndpointEnumType" />
+                        <xsd:element name="errorLanguageEnum" type="ErrorLanguageEnumType" minOccurs="0" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="logger_interface" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="validatorBuilder" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="EndpointEnumType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="PROD"/>
+            <xsd:enumeration value="SANDBOX"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="ErrorLanguageEnumType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="DE"/>
+            <xsd:enumeration value="EN"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>
