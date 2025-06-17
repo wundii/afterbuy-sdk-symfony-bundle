@@ -13,8 +13,8 @@ use Wundii\AfterbuySdk\SymfonyBundle\Command\DefaultConfigCommand;
 return function (ContainerConfigurator $containerConfigurator): void {
     $services = $containerConfigurator->services();
 
-    $services->set(AfterbuyGlobal::class)
-        ->public();
+    // $services->set(AfterbuyGlobal::class)
+    //     ->public();
     $services->set(Afterbuy::class)
         ->arg('$afterbuyGlobal', new ReferenceConfigurator(AfterbuyGlobal::class))
         ->public();
