@@ -44,8 +44,8 @@ class AfterbuySdkExtensionTest extends TestCase
 
         $this->assertSame('your_account_token', $args[0]);
         $this->assertSame('your_partner_token', $args[1]);
-        $this->assertInstanceOf(EndpointEnum::class, $args[2]);
-        $this->assertInstanceOf(ErrorLanguageEnum::class, $args[3]);
+        $this->assertSame('sandbox', $args[2]);
+        $this->assertSame('DE', $args[3]);
     }
 
     public function testGetXsdValidationBasePath(): void
