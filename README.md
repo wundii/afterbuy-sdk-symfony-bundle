@@ -25,7 +25,7 @@ Include the bundle in your `bundles.php`:
 ```php
 return [
     // ...
-    Wundii\AfterbuySdk\SymfonyBundle\AfterbuyBundle::class => ['all' => true],
+    Wundii\AfterbuySdk\SymfonyBundle\AfterbuySdkBundle::class => ['all' => true],
 ];
 ```
 
