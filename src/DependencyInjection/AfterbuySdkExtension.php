@@ -10,6 +10,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use Symfony\Component\DependencyInjection\Reference;
 use Wundii\AfterbuySdk\Core\Afterbuy;
 use Wundii\AfterbuySdk\Core\AfterbuyGlobal;
 use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
@@ -36,6 +37,14 @@ class AfterbuySdkExtension extends Extension
             throw new Exception('The "afterbuy_global" configuration must be an array.');
         }
 
+        if (! is_string($loggerInterface)) {
+            throw new Exception('The "logger_interface" configuration must be a string.');
+        }
+
+        if (! is_string($validatorBuilder)) {
+            throw new Exception('The "validatorBuilder" configuration must be a string.');
+        }
+
         $accountToken = $afterbuyGlobal['accountToken'];
         $partnerToken = $afterbuyGlobal['partnerToken'];
         $endpointEnum = $afterbuyGlobal['endpointEnum'];
@@ -59,7 +68,6 @@ class AfterbuySdkExtension extends Extension
 
         $endpointEnum = EndpointEnum::tryFrom(strtolower($endpointEnum));
         $errorLanguageEnum = ErrorLanguageEnum::tryFrom(strtoupper($errorLanguageEnum));
-        $validatorBuilder = $validatorBuilder !== '' ? $validatorBuilder : null;
 
         $afterbuyGlobalDef = new Definition(AfterbuyGlobal::class, [
             $accountToken,
@@ -69,10 +77,13 @@ class AfterbuySdkExtension extends Extension
         ]);
         $containerBuilder->setDefinition(AfterbuyGlobal::class, $afterbuyGlobalDef);
 
+        $loggerReference = class_exists($loggerInterface) ? new Reference($loggerInterface) : null;
+        $validatorReference = class_exists($validatorBuilder) ? new Reference($validatorBuilder) : null;
+
         $afterbuyDef = new Definition(Afterbuy::class, [
             $afterbuyGlobalDef,
-            $loggerInterface,
-            $validatorBuilder,
+            $loggerReference,
+            $validatorReference,
         ]);
         $containerBuilder->setDefinition(Afterbuy::class, $afterbuyDef);
     }
