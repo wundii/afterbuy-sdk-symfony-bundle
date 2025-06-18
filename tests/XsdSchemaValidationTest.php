@@ -16,7 +16,7 @@ class XsdSchemaValidationTest extends TestCase
     {
         $xml = <<<XML
 <?xml version="1.0" encoding="UTF-8"?>
-<config xmlns="http://wundii.com/schema/dic/afterbuy_sdk">
+<config>
     <afterbuy_global>
         <accountToken>token1</accountToken>
         <partnerToken>token2</partnerToken>
