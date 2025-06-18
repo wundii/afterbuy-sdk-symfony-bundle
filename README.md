@@ -12,6 +12,27 @@
 
 A ***Symfony bundle*** providing seamless integration for the [wundii/afterbuy-sdk](https://github.com/wundii/afterbuy-sdk).
 
+## Afterbuy API Documentation
+- [Shop API Documentation](https://xmldoku.afterbuy.de/shopdoku/)
+- [XML API Documentation](https://xmldoku.afterbuy.de/dokued/)
+
+### Supported Requests with Examples
+- [x] [CreateShopOrder](examples/CreateShopOrder.md)
+- [x] [GetAfterbuyTime](examples/GetAfterbuyTime.md)
+- [x] [GetListerHistory](examples/GetListerHistory.md)
+- [x] [GetMailTemplates](examples/GetMailTemplates.md)
+- [x] [GetPaymentServices](examples/GetPaymentServices.md)
+- [x] [GetProductDiscounts](examples/GetProductDiscounts.md)
+- [x] [GetShippingCost](examples/GetShippingCost.md)
+- [x] [GetShippingServices](examples/GetShippingServices.md)
+- [x] [GetShopCatalogs](examples/GetShopCatalogs.md)
+- [x] [GetShopProducts](examples/GetShopProducts.md)
+- [x] [GetSoldItems](examples/GetSoldItems.md)
+- [x] [GetStockInfo](examples/GetStockInfo.md)
+- [x] [GetTranslatedMailTemplate](examples/GetTranslatedMailTemplate.md)
+- [x] [UpdateCatalogs](examples/UpdateCatalogs.md)
+- [x] [UpdateShopProducts](examples/UpdateShopProducts.md)
+- [x] [UpdateSoldItems](examples/UpdateSoldItems.md)
 
 ## Installation
 Require the bundle and its dependencies with composer:
@@ -41,10 +62,20 @@ The following setting options are available
 ```yaml
 afterbuy_sdk:
   afterbuy_global:
-    accountToken: <your_account_token> / %env(...)%
-    partnerToken: <your_partner_token> / %env(...)%
-    endpointEnum: sandbox / %env(...)%
-    errorLanguageEnum: DE / %env(...)%
+    accountToken: <your_account_token> / "%env(...)%"
+    partnerToken: <your_partner_token> / "%env(...)%"
+    endpointEnum: sandbox
+    errorLanguageEnum: DE
   logger_interface: <your_logger_interface_class_string>
-  validatorBuilder:
+  validatorBuilder: <your_validatorBuilder_class_string>
+
+when@test:
+  afterbuy_sdk:
+    afterbuy_global:
+      endpointEnum: sandbox
+
+when@prod:
+  afterbuy_sdk:
+    afterbuy_global:
+      endpointEnum: prod
 ```
