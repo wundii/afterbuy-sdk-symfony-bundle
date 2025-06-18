@@ -79,3 +79,9 @@ when@prod:
     afterbuy_global:
       endpointEnum: prod
 ```
+
+### After modifying the configuration, it is recommended to clear the cache
+
+```bash
+bin/console cache:clear
+```

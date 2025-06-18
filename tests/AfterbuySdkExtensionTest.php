@@ -55,4 +55,21 @@ class AfterbuySdkExtensionTest extends TestCase
         $this->assertIsString($result);
         $this->assertStringEndsWith('src/DependencyInjection/../Resources/config/schema', $result);
     }
+
+    public function testConfigLoadExceptionOnInvalidAfterbuyGlobal(): void
+    {
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Invalid type for path "afterbuy_sdk.afterbuy_global". Expected "array", but got "string"');
+
+        $container = new ContainerBuilder();
+        $extension = new AfterbuySdkExtension();
+
+        $configs = [[
+            'afterbuy_global' => 'invalid_value',
+            'logger_interface' => 'logger_interface_class_string',
+            'validatorBuilder' => '',
+        ]];
+
+        $extension->load($configs, $container);
+    }
 }
