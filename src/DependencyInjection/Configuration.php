@@ -6,11 +6,22 @@ namespace Wundii\AfterbuySdk\SymfonyBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
+use Wundii\AfterbuySdk\Enum\ErrorLanguageEnum;
 
 class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): TreeBuilder
     {
+        $endpoint = array_map(
+            static fn (EndpointEnum $endpointEnum): string => $endpointEnum->value,
+            EndpointEnum::cases()
+        );
+        $errorLanguage = array_map(
+            static fn (ErrorLanguageEnum $errorLanguageEnum): string => $errorLanguageEnum->value,
+            ErrorLanguageEnum::cases()
+        );
+
         $treeBuilder = new TreeBuilder('afterbuy_sdk');
 
         /** @phpstan-ignore-next-line  */
@@ -27,13 +38,15 @@ class Configuration implements ConfigurationInterface
             ->defaultValue('<your_partner_token>')
             ->info('Partner Token or %env(...)%')
             ->end()
-            ->scalarNode('endpointEnum')
+            ->enumNode('endpointEnum')
+            ->values($endpoint)
             ->defaultValue('sandbox')
-            ->info('sandbox/prod or %env(...)%')
+            ->info('Endpoint enum value')
             ->end()
-            ->scalarNode('errorLanguageEnum')
+            ->enumNode('errorLanguageEnum')
+            ->values($errorLanguage)
             ->defaultValue('DE')
-            ->info('Error language enum value (e.g. DE, EN)')
+            ->info('Error language enum value')
             ->end()
             ->end()
             ->end()

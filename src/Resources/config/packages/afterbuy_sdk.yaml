@@ -6,3 +6,13 @@ afterbuy_sdk:
     errorLanguageEnum: DE
   logger_interface:
   validatorBuilder:
+
+when@test:
+  afterbuy_sdk:
+    afterbuy_global:
+      endpointEnum: sandbox
+
+when@prod:
+  afterbuy_sdk:
+    afterbuy_global:
+      endpointEnum: prod

@@ -40,7 +40,7 @@ class ConfigurationTest extends TestCase
             'afterbuy_global' => [
                 'accountToken' => 'your_account_token',
                 'partnerToken' => 'your_partner_token',
-                'endpointEnum' => 'PROD',
+                'endpointEnum' => 'prod',
                 'errorLanguageEnum' => 'EN',
             ],
             'logger_interface' => 'logger_interface_class_string',
@@ -50,7 +50,7 @@ class ConfigurationTest extends TestCase
 
         $this->assertSame('your_account_token', $config['afterbuy_global']['accountToken']);
         $this->assertSame('your_partner_token', $config['afterbuy_global']['partnerToken']);
-        $this->assertSame('PROD', $config['afterbuy_global']['endpointEnum']);
+        $this->assertSame('prod', $config['afterbuy_global']['endpointEnum']);
         $this->assertSame('EN', $config['afterbuy_global']['errorLanguageEnum']);
     }
 }
