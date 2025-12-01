@@ -11,6 +11,9 @@ use Wundii\AfterbuySdk\Enum\ErrorLanguageEnum;
 
 class Configuration implements ConfigurationInterface
 {
+    /**
+     * @return TreeBuilder<'array'>
+     */
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $endpoint = array_map(
@@ -23,8 +26,6 @@ class Configuration implements ConfigurationInterface
         );
 
         $treeBuilder = new TreeBuilder('afterbuy_sdk');
-
-        /** @phpstan-ignore-next-line  */
         $treeBuilder->getRootNode()
             ->children()
             ->arrayNode('afterbuy_global')
