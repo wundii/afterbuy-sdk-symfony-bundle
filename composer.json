@@ -21,7 +21,7 @@
     "symfony/console": "^6.4 || ^7.4 || ^8.0",
     "symfony/dependency-injection": "^6.4 || ^7.4 || ^8.0",
     "symfony/http-kernel": "^6.4 || ^7.4 || ^8.0",
-    "wundii/afterbuy-sdk": "dev-main || ^0.24 || ^1.0"
+    "wundii/afterbuy-sdk": "^1.0.1 || dev-main"
   },
   "require-dev": {
     "ext-libxml": "*",
