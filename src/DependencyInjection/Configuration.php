@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\SymfonyBundle\DependencyInjection;
 
+use DateTimeInterface;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Wundii\AfterbuySdk\Enum\Core\EndpointEnum;
 use Wundii\AfterbuySdk\Enum\ErrorLanguageEnum;
+use Wundii\AfterbuySdk\Extension\DateTime;
 
 class Configuration implements ConfigurationInterface
 {
@@ -58,6 +60,19 @@ class Configuration implements ConfigurationInterface
             ->scalarNode('validatorBuilder')
             ->defaultNull()
             ->info('ValidatorBuilder class string (e.g. Symfony\Component\Validator\ValidatorBuilder)')
+            ->end()
+            ->booleanNode('debug_mode')
+            ->defaultFalse()
+            ->info('Enable the debug mode of the Afterbuy SDK')
+            ->end()
+            ->arrayNode('class_map')
+            ->useAttributeAsKey('interface')
+            ->scalarPrototype()
+            ->end()
+            ->defaultValue([
+                DateTimeInterface::class => DateTime::class,
+            ])
+            ->info('Class mapping for interfaces or other classes used by the data mapper')
             ->end()
             ->end();
 

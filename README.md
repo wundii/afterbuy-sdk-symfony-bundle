@@ -18,6 +18,7 @@ A ***Symfony bundle*** providing seamless integration for the [wundii/afterbuy-s
 - [XML API Documentation](https://xmldoku.afterbuy.de/dokued/)
 
 ### Supported Requests with Examples
+- [x] [CancelOrders](https://github.com/wundii/afterbuy-sdk/tree/main/examples/CancelOrders.md)
 - [x] [CreateShopOrder](https://github.com/wundii/afterbuy-sdk/tree/main/examples/CreateShopOrder.md)
 - [x] [GetAfterbuyTime](https://github.com/wundii/afterbuy-sdk/tree/main/examples/GetAfterbuyTime.md)
 - [x] [GetListerHistory](https://github.com/wundii/afterbuy-sdk/tree/main/examples/GetListerHistory.md)
@@ -31,6 +32,8 @@ A ***Symfony bundle*** providing seamless integration for the [wundii/afterbuy-s
 - [x] [GetSoldItems](https://github.com/wundii/afterbuy-sdk/tree/main/examples/GetSoldItems.md)
 - [x] [GetStockInfo](https://github.com/wundii/afterbuy-sdk/tree/main/examples/GetStockInfo.md)
 - [x] [GetTranslatedMailTemplate](https://github.com/wundii/afterbuy-sdk/tree/main/examples/GetTranslatedMailTemplate.md)
+- [x] [GetUserDefinedFlags](https://github.com/wundii/afterbuy-sdk/tree/main/examples/GetUserDefinedFlags.md)
+- [x] [GetVersion](https://github.com/wundii/afterbuy-sdk/tree/main/examples/GetVersion.md)
 - [x] [UpdateCatalogs](https://github.com/wundii/afterbuy-sdk/tree/main/examples/UpdateCatalogs.md)
 - [x] [UpdateShopProducts](https://github.com/wundii/afterbuy-sdk/tree/main/examples/UpdateShopProducts.md)
 - [x] [UpdateSoldItems](https://github.com/wundii/afterbuy-sdk/tree/main/examples/UpdateSoldItems.md)
@@ -69,6 +72,9 @@ afterbuy_sdk:
     errorLanguageEnum: DE
   logger_interface: <your_logger_interface_class_string>
   validatorBuilder: <your_validatorBuilder_class_string>
+  debug_mode: false # Enable the debug mode of the Afterbuy SDK
+  class_map: # Class mapping for interfaces or other classes used by the data mapper
+    DateTimeInterface: Wundii\AfterbuySdk\Extension\DateTime # default
 
 when@test:
   afterbuy_sdk:

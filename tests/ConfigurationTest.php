@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Wundii\AfterbuySdk\SymfonyBundle\Tests;
 
+use DateTimeInterface;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Definition\Processor;
+use Wundii\AfterbuySdk\Extension\DateTime;
 use Wundii\AfterbuySdk\SymfonyBundle\DependencyInjection\Configuration;
 
 class ConfigurationTest extends TestCase
@@ -26,6 +28,10 @@ class ConfigurationTest extends TestCase
             ],
             'logger_interface' => null,
             'validatorBuilder' => null,
+            'debug_mode' => false,
+            'class_map' => [
+                DateTimeInterface::class => DateTime::class,
+            ],
         ];
 
         $this->assertSame($expected, $config);

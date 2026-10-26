@@ -19,6 +19,22 @@
             </xsd:element>
             <xsd:element name="logger_interface" type="xsd:string" minOccurs="0"/>
             <xsd:element name="validatorBuilder" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="debug_mode" type="xsd:boolean" minOccurs="0"/>
+            <xsd:element name="class_map" type="ClassMapType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ClassMapType">
+        <xsd:sequence>
+            <xsd:element name="entry" minOccurs="0" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:string">
+                            <xsd:attribute name="key" type="xsd:string" use="required"/>
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
         </xsd:sequence>
     </xsd:complexType>
 

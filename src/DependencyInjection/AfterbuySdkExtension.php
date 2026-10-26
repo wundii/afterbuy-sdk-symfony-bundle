@@ -60,12 +60,17 @@ class AfterbuySdkExtension extends Extension
         $containerBuilder->setDefinition(AfterbuyGlobal::class, $afterbuyGlobalDef);
 
         $loggerReference = interface_exists($loggerInterface) || class_exists($loggerInterface) ? new Reference($loggerInterface) : null;
-        $validatorReference = interface_exists($validatorBuilder) || class_exists($loggerInterface) ? new Reference($validatorBuilder) : null;
+        $validatorReference = interface_exists($validatorBuilder) || class_exists($validatorBuilder) ? new Reference($validatorBuilder) : null;
+
+        $debugMode = $config['debug_mode'] === true;
+        $classMap = is_array($config['class_map']) && $config['class_map'] !== [] ? $config['class_map'] : null;
 
         $afterbuyDef = new Definition(Afterbuy::class, [
             $afterbuyGlobalDef,
             $loggerReference,
             $validatorReference,
+            $debugMode,
+            $classMap,
         ]);
         $containerBuilder->setDefinition(Afterbuy::class, $afterbuyDef);
     }

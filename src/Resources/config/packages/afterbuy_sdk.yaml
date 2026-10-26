@@ -6,6 +6,9 @@ afterbuy_sdk:
     errorLanguageEnum: DE
   logger_interface:
   validatorBuilder:
+  debug_mode: false
+  class_map:
+    DateTimeInterface: Wundii\AfterbuySdk\Extension\DateTime
 
 when@test:
   afterbuy_sdk:

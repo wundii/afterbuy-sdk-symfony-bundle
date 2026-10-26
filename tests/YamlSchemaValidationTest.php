@@ -71,6 +71,10 @@ class YamlSchemaValidationTest extends TestCase
                 $this->arrayToXml($value, $child, $dom, $namespace);
                 $parent->appendChild($child);
             } else {
+                if (is_bool($value)) {
+                    $value = $value ? 'true' : 'false';
+                }
+
                 $child = $dom->createElementNS($namespace, $key, $value ?? '');
                 $parent->appendChild($child);
             }

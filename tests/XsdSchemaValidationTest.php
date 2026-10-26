@@ -25,6 +25,10 @@ class XsdSchemaValidationTest extends TestCase
 </afterbuy_global>
     <logger_interface>interface</logger_interface>
     <validatorBuilder/>
+    <debug_mode>false</debug_mode>
+    <class_map>
+        <entry key="DateTimeInterface">Wundii\AfterbuySdk\Extension\DateTime</entry>
+    </class_map>
 </config>
 XML;
 
