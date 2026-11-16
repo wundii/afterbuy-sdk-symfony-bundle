@@ -31,13 +31,13 @@
   },
   "require-dev": {
     "ext-libxml": "*",
-    "phpstan/phpstan": "2.3.1",
-    "phpstan/phpstan-strict-rules": "2.1.0",
-    "phpunit/phpunit": "11.5.50",
-    "rector/rector": "2.7.0",
+    "phpstan/phpstan": "2.3.6",
+    "phpstan/phpstan-strict-rules": "2.1.1",
+    "phpunit/phpunit": "11.5.58",
+    "rector/rector": "2.8.5",
     "symfony/var-dumper": "^7.4 || ^8.0",
     "symfony/yaml": "^7.4 || ^8.0",
-    "symplify/easy-coding-standard": "13.3.12",
+    "symplify/easy-coding-standard": "13.3.17",
     "wundii/phplint": "0.3.4"
   },
   "autoload": {
@@ -51,12 +51,6 @@
     }
   },
   "scripts": {
-    "post-install-cmd": [
-      "@auto-scripts"
-    ],
-    "post-update-cmd": [
-      "@auto-scripts"
-    ],
     "complete-check": [
       "@cache-clear",
       "@phplint",
@@ -75,5 +69,11 @@
     "rector-dry": "php vendor/bin/rector process --dry-run --ansi",
     "unittest": "php vendor/bin/phpunit --configuration phpunit.xml"
   },
-  "minimum-stability": "stable"
+  "minimum-stability": "stable",
+  "config": {
+    "platform": {
+      "php": "8.2.0"
+    },
+    "sort-packages": true
+  }
 }
